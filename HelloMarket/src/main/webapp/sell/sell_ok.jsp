@@ -44,6 +44,7 @@
 	
 	out.println(userId);
 	out.println(p_image1_orig_name);
+
 	
 	
 	
@@ -54,10 +55,11 @@
 
      </script>
    <%
+   request.setCharacterEncoding("UTF-8");
    BoardDTO boarddto = new BoardDTO();
     String user_email = userId;
-    String deal_m1 = multi.getParameter("deal_m1");
-    String deal_m2 = multi.getParameter("deal_m2");
+    String [] deal_m1 = multi.getParameterValues("deal_m1");
+   // String deal_m2 = multi.getParameter("deal_m2");
     String p_image1_path = multi.getParameter("p_image1_path");
    
     String p_title = multi.getParameter("p_title");
@@ -73,10 +75,17 @@
     String p_transac_loc = multi.getParameter("p_transac_loc");
    
     
+    String dealstr = "";
+   	for(int i=0; i<deal_m1.length; i++){
+   		dealstr = dealstr + deal_m1[i] + " "; 
+   	}
+    
+    %>
+    
+    <% 
     boarddto.setUser_email(user_email);
 
     boarddto.setDeal_m1(deal_m1);
-    boarddto.setDeal_m2(deal_m2);
     boarddto.setP_image1_path(p_image1_path);
     boarddto.setP_image1_orig_name(p_image1_orig_name);
     boarddto.setP_title(p_title);
@@ -90,6 +99,9 @@
     boarddto.setP_status1(p_status1);
     boarddto.setP_status2(p_status2);
     boarddto.setP_transac_loc(p_transac_loc);
+    
+   
+    
  
       int num = boardDAO.registBoard(boarddto);
       

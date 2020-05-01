@@ -28,6 +28,12 @@ public class BoardDAO {
       }
    }
    
+   
+   
+   
+   
+   
+
       
    public int registBoard(BoardDTO boarddto) {
 	        
@@ -44,7 +50,7 @@ public class BoardDAO {
 	         
 	         pstmt.setString(1, boarddto.getUser_email());
 	         System.out.println(boarddto.getUser_email());
-	         pstmt.setString(2, boarddto.getDeal_m1()+ boarddto.getDeal_m2());
+	         pstmt.setString(2, boarddto.dealstr); // 배열을 어떻게 넣지 고민이 되네 
 	         pstmt.setString(3, boarddto.getP_image1_path());
 	         pstmt.setString(4, boarddto.getP_image1_orig_name());
 	         System.out.println(boarddto.getP_image1_orig_name());
@@ -120,7 +126,7 @@ public class BoardDAO {
               conn = Dbconn.getConnection();
               String sql = "update sellboard_2 set deal_m=? p_image1_orig_name=? p_title=? p_m_category=?, p_s_category=?,  p_description=?  p_trade_kind=?, p_price=?, p_delivery=?, p_exchage=?, p_status1=?, p_status2=?, p_transac_loc=? where p_idx=?";
               pstmt = conn.prepareStatement(sql);
-              pstmt.setString(1, boarddto.getDeal_m1()+ boarddto.getDeal_m2());
+              //pstmt.setString(1, boarddto.getDeal_m1()+ boarddto.getDeal_m2());
               pstmt.setString(2, boarddto.getP_image1_orig_name());
               pstmt.setString(3, boarddto.getP_title());
               pstmt.setString(4, boarddto.getP_m_category());

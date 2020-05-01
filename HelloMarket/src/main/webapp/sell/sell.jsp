@@ -492,9 +492,9 @@
                     <div class="hellopay_box_area" > <!--일단 얘는 이름 맞는거 같은데   -->
                       <ul>
                         <li class="">
-                       <input type="checkbox" id ="deal_m" name="deal_m1" value="헬로페이">헬로페이</li>
+                       <input type="checkbox"  name="deal_m1" value="헬로페이">헬로페이</li>
                         <li >
-                        <input type="checkbox"  id ="deal_m" name="deal_m2" value="직거래">직거래</li>
+                        <input type="checkbox"  name="deal_m1" value="직거래">직거래</li>
                       </ul>
                     </div>
                     <div class="hellopay_direct_notice"><span class="normal_notice">헬로페이만 선택 후 등록시 노출, 할인 혜택

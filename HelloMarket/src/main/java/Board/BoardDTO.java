@@ -3,8 +3,9 @@ package Board;
 public class BoardDTO {
     private int p_idx;
    private String user_email;
-   private String deal_m1;
-   private String deal_m2;
+   private String [] deal_m1;
+   String dealstr = "";
+   
    private String p_image1_path;
    private String p_image1_orig_name;
    private String p_title;
@@ -34,18 +35,23 @@ public class BoardDTO {
 	public void setUser_email(String user_email) {
 		this.user_email = user_email;
 	}
-	public String getDeal_m1() {
+	
+	
+	
+	public String[] getDeal_m1() {
 		return deal_m1;
 	}
-	public void setDeal_m1(String deal_m1) {
+	public void setDeal_m1(String[] deal_m1) {
 		this.deal_m1 = deal_m1;
+		
+		
+		for(int i=0; i<deal_m1.length; i++){
+			dealstr = dealstr + deal_m1[i] + " "; 
+		}
 	}
-	public String getDeal_m2() {
-		return deal_m2;
-	}
-	public void setDeal_m2(String deal_m2) {
-		this.deal_m2 = deal_m2;
-	}
+	
+	
+	
 	public String getP_image1_path() {
 		return p_image1_path;
 	}
@@ -146,7 +152,7 @@ public class BoardDTO {
 	}
 	@Override
 	public String toString() {
-		return "BoardDTO [p_idx="+p_idx+", user_email="+user_email+", deal_m1="+deal_m1+", deal_m2="+deal_m2+"p_image1_path="+p_image1_path+", p_image1_orig_name="+p_image1_orig_name+", p_title="+p_title+",p_m_category"+p_m_category+", p_s_category="+p_s_category+",p_description="+p_description+", p_trade_kind="+p_trade_kind+", p_price="+p_price+", p_delivery="+p_delivery+", p_exchange="+p_exchange+
+		return "BoardDTO [p_idx="+p_idx+", user_email="+user_email+", deal_m1="+deal_m1+ "p_image1_path="+p_image1_path+", p_image1_orig_name="+p_image1_orig_name+", p_title="+p_title+",p_m_category"+p_m_category+", p_s_category="+p_s_category+",p_description="+p_description+", p_trade_kind="+p_trade_kind+", p_price="+p_price+", p_delivery="+p_delivery+", p_exchange="+p_exchange+
 				", p_status1="+p_status1+", p_status2="+p_status2+", p_transac_loc="+p_transac_loc+ ", member_nick="+member_nick+",member_level="+member_level+", member_star="+ member_star + "]";
 	}
 
