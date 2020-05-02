@@ -87,9 +87,10 @@ $(function(){
             location.href = "join/signup.html"
         })
     }
-    function alarm_open(){ //알람 클릭하면 알람 페이지로 넘어가는거 
+    function alarm_open(alarm_count){ //알람 클릭하면 알람 페이지로 넘어가는거 
     	$("#alarm_btn").on('click',function(){
     		location.href = "/HelloMarket/alarm.jsp"; //href = alarm.jsp?alarm_count =<%=alarm_count%> 이렇게 넣는게 최종목표
+    		//alarm_count 1이면 alarm.jsp로alarm_count= 0이면 alarm_zreo.jsp로
     	})
     }
     $(".gnb_my_list_first").on('click',function(){ //얘는 자기 상점으로 

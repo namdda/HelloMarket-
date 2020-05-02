@@ -5,6 +5,7 @@ public class BoardDTO {
    private String user_email;
    private String [] deal_m1;
    String dealstr = "";
+   String deliverstr = "";
    
    private String p_image1_path;
    private String p_image1_orig_name;
@@ -14,10 +15,10 @@ public class BoardDTO {
    private String p_description;
    private String p_trade_kind;
    private String p_price;
-   private String p_delivery;
-   private String p_exchange;
+   private String[] p_delivery;
+  // private String p_exchange;
    private String p_status1;
-   private String p_status2;
+   //private String p_status2;
    private String p_transac_loc;
 
    private String member_nick;
@@ -102,30 +103,25 @@ public class BoardDTO {
 	public void setP_price(String p_price) {
 		this.p_price = p_price;
 	}
-	public String getP_delivery() {
+	public String[] getP_delivery() {
 		return p_delivery;
 	}
-	public void setP_delivery(String p_delivery) {
+	public void setP_delivery(String[] p_delivery) {
 		this.p_delivery = p_delivery;
+		
+		for(int j=0; j<p_delivery.length; j++){
+			deliverstr = deliverstr + p_delivery[j] + " "; 
+		}
+		
 	}
-	public String getP_exchange() {
-		return p_exchange;
-	}
-	public void setP_exchange(String p_exchange) {
-		this.p_exchange = p_exchange;
-	}
+
 	public String getP_status1() {
 		return p_status1;
 	}
 	public void setP_status1(String p_status1) {
 		this.p_status1 = p_status1;
 	}
-	public String getP_status2() {
-		return p_status2;
-	}
-	public void setP_status2(String p_status2) {
-		this.p_status2 = p_status2;
-	}
+
 	public String getP_transac_loc() {
 		return p_transac_loc;
 	}
@@ -152,8 +148,8 @@ public class BoardDTO {
 	}
 	@Override
 	public String toString() {
-		return "BoardDTO [p_idx="+p_idx+", user_email="+user_email+", deal_m1="+deal_m1+ "p_image1_path="+p_image1_path+", p_image1_orig_name="+p_image1_orig_name+", p_title="+p_title+",p_m_category"+p_m_category+", p_s_category="+p_s_category+",p_description="+p_description+", p_trade_kind="+p_trade_kind+", p_price="+p_price+", p_delivery="+p_delivery+", p_exchange="+p_exchange+
-				", p_status1="+p_status1+", p_status2="+p_status2+", p_transac_loc="+p_transac_loc+ ", member_nick="+member_nick+",member_level="+member_level+", member_star="+ member_star + "]";
+		return "BoardDTO [p_idx="+p_idx+", user_email="+user_email+", deal_m1="+deal_m1+ "p_image1_path="+p_image1_path+", p_image1_orig_name="+p_image1_orig_name+", p_title="+p_title+",p_m_category"+p_m_category+", p_s_category="+p_s_category+",p_description="+p_description+", p_trade_kind="+p_trade_kind+", p_price="+p_price+", p_delivery="+p_delivery+
+				", p_status1="+p_status1+", p_transac_loc="+p_transac_loc+ ", member_nick="+member_nick+",member_level="+member_level+", member_star="+ member_star + "]";
 	}
 
     

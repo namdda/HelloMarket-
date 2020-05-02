@@ -42,15 +42,15 @@ public class BoardDAO {
 	      try {
 	    	 conn = Dbconn.getConnection();
 	    	 
-	    	 String sql = "insert into sellboard_2(user_email, deal_m1, p_image1_path, p_image1_orig_name, p_title, p_m_catagory, p_s_catagory, p_description, p_trade_kind, p_price, p_delivery, p_exchange, p_status1, p_status2, p_transac_loc) " + 
-			            "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+	    	 String sql = "insert into sellboard_4(user_email, deal_m1, p_image1_path, p_image1_orig_name, p_title, p_m_catagory, p_s_catagory, p_description, p_trade_kind, p_price, p_delivery, p_status1, p_transac_loc) " + 
+			            "values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
 	    	 
 
 	         pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 	         
 	         pstmt.setString(1, boarddto.getUser_email());
 	         System.out.println(boarddto.getUser_email());
-	         pstmt.setString(2, boarddto.dealstr); // 배열을 어떻게 넣지 고민이 되네 
+	         pstmt.setString(2, boarddto.dealstr); //성공
 	         pstmt.setString(3, boarddto.getP_image1_path());
 	         pstmt.setString(4, boarddto.getP_image1_orig_name());
 	         System.out.println(boarddto.getP_image1_orig_name());
@@ -60,11 +60,9 @@ public class BoardDAO {
 	         pstmt.setString(8, boarddto.getP_description());
 	         pstmt.setString(9, boarddto.getP_trade_kind());
 	         pstmt.setString(10, boarddto.getP_price());
-	         pstmt.setString(11, boarddto.getP_delivery());
-	         pstmt.setString(12, boarddto.getP_exchange());
-	         pstmt.setString(13, boarddto.getP_status1());
-	         pstmt.setString(14, boarddto.getP_status2());
-	         pstmt.setString(15, boarddto.getP_transac_loc());
+	         pstmt.setString(11, boarddto.deliverstr);
+	         pstmt.setString(12, boarddto.getP_status1());
+	         pstmt.setString(13, boarddto.getP_transac_loc());
 	         
 	         int rows = pstmt.executeUpdate();
 	        
@@ -95,7 +93,7 @@ public class BoardDAO {
 		
 		try {
 			conn = Dbconn.getConnection();
-			String sql = "UPDATE sellboard_2 SET p_image1_path = ? WHERE p_idx = ? ";
+			String sql = "UPDATE sellboard_4 SET p_image1_path = ? WHERE p_idx = ? ";
 			pstmt = conn.prepareStatement(sql);
 			
 			
@@ -124,7 +122,7 @@ public class BoardDAO {
            try {
 
               conn = Dbconn.getConnection();
-              String sql = "update sellboard_2 set deal_m=? p_image1_orig_name=? p_title=? p_m_category=?, p_s_category=?,  p_description=?  p_trade_kind=?, p_price=?, p_delivery=?, p_exchage=?, p_status1=?, p_status2=?, p_transac_loc=? where p_idx=?";
+              String sql = "update sellboard_4 set deal_m=? p_image1_orig_name=? p_title=? p_m_category=?, p_s_category=?,  p_description=?  p_trade_kind=?, p_price=?, p_delivery=?, p_exchage=?, p_status1=?, p_status2=?, p_transac_loc=? where p_idx=?";
               pstmt = conn.prepareStatement(sql);
               //pstmt.setString(1, boarddto.getDeal_m1()+ boarddto.getDeal_m2());
               pstmt.setString(2, boarddto.getP_image1_orig_name());
@@ -134,10 +132,10 @@ public class BoardDAO {
               pstmt.setString(6, boarddto.getP_description());
               pstmt.setString(7, boarddto.getP_trade_kind());
               pstmt.setString(8, boarddto.getP_price());
-              pstmt.setString(9, boarddto.getP_delivery());
-              pstmt.setString(10, boarddto.getP_exchange());
+              //pstmt.setString(9, boarddto.getP_delivery());
+              //pstmt.setString(10, boarddto.getP_exchange());
               pstmt.setString(11, boarddto.getP_status1());
-              pstmt.setString(12, boarddto.getP_status2());
+             // pstmt.setString(12, boarddto.getP_status2());
               pstmt.setString(13, boarddto.getP_transac_loc());
               
               try (ResultSet geneResultKey = pstmt.getGeneratedKeys()){
@@ -168,7 +166,7 @@ public class BoardDAO {
       
       try {
          conn = Dbconn.getConnection();
-         String sql = "select p_idx, p_image1_orig_name, p_title, p_price from sellboard order by p_idx desc limit ?,?";
+         String sql = "select p_idx, p_image1_orig_name, p_title, p_price from sellboard_4 order by p_idx desc limit ?,?";
          pstmt = conn.prepareStatement(sql);
          pstmt.setInt(1, startrow);
          pstmt.setInt(2, endrow);  
@@ -200,7 +198,7 @@ public class BoardDAO {
             List<BoardDTO> boardList = new ArrayList<BoardDTO>();
             try {
                conn = Dbconn.getConnection();
-               String sql = "select p_idx, p_image1_orig_name, p_title, p_price from sellboard order by p_idx desc where p_m_catagory=? limit ?,?";
+               String sql = "select p_idx, p_image1_orig_name, p_title, p_price from sellboard_4 order by p_idx desc where p_m_catagory=? limit ?,?";
                pstmt = conn.prepareStatement(sql);
                pstmt.setString(1, m_category);
               pstmt.setInt(2, startrow);

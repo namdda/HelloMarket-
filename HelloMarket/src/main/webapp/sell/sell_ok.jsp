@@ -59,7 +59,6 @@
    BoardDTO boarddto = new BoardDTO();
     String user_email = userId;
     String [] deal_m1 = multi.getParameterValues("deal_m1");
-   // String deal_m2 = multi.getParameter("deal_m2");
     String p_image1_path = multi.getParameter("p_image1_path");
    
     String p_title = multi.getParameter("p_title");
@@ -68,10 +67,8 @@
     String p_description = multi.getParameter("p_description");
     String p_trade_kind = multi.getParameter("p_trade_kind");
     String p_price = multi.getParameter("p_price");
-    String p_delivery = multi.getParameter("p_delivery");
-    String p_exchange = multi.getParameter("p_exchange");
+    String[] p_delivery = multi.getParameterValues("p_delivery");
     String p_status1 = multi.getParameter("p_status1");
-    String p_status2 = multi.getParameter("p_status2");
     String p_transac_loc = multi.getParameter("p_transac_loc");
    
     
@@ -79,6 +76,11 @@
    	for(int i=0; i<deal_m1.length; i++){
    		dealstr = dealstr + deal_m1[i] + " "; 
    	}
+   	
+   	String deliverstr = "";
+   	for(int j=0; j<p_delivery.length; j++){
+		deliverstr = deliverstr + p_delivery[j] + " "; 
+	}
     
     %>
     
@@ -95,9 +97,7 @@
     boarddto.setP_trade_kind(p_trade_kind);
     boarddto.setP_price(p_price);
     boarddto.setP_delivery(p_delivery);
-    boarddto.setP_exchange(p_exchange);
     boarddto.setP_status1(p_status1);
-    boarddto.setP_status2(p_status2);
     boarddto.setP_transac_loc(p_transac_loc);
     
    
