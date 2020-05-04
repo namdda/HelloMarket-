@@ -593,10 +593,7 @@
                              <input type="radio" id="trade_kind" name="p_trade_kind" value="판매">판매
                           </div>
                         </li>
-                        <li>
-                          <div class=""><!-- text_wrapper text_second -->
-                             <input type="radio" id="trade_kind" name="p_trade_kind" value="삽니다">삽니다
-                          </div>
+                     
                         </li>
                       </ul>
                     </div>
